@@ -24,6 +24,15 @@ public class GameController : MonoBehaviour
         GenerateGame();
     }
 
+    //TODO: delete it later, used for testing only
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.N))
+        {
+            GenerateGame();
+        }
+    }
+
     public void GenerateGame()
     {
         int x = (int)Mathf.Min((float)(6 + 2 * (gameLevel / 3)), 18f);
@@ -36,7 +45,6 @@ public class GameController : MonoBehaviour
             playerObj = Instantiate(playerPrefab);
         }
         playerObj.transform.position = mapController.GetPlayerPos();
-        // TODO: avoid initiating everytime for props
         // TODO：add the restriction for the number of bombs and locations
         playerObj.GetComponent<PlayerController>().Init(1, 3, 1.5f);
 

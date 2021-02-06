@@ -215,6 +215,7 @@ GameObject:
   - component: {fileID: 1948814264}
   - component: {fileID: 1948814263}
   - component: {fileID: 1948814265}
+  - component: {fileID: 1948814266}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -234,15 +235,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a2fcf301db01d244a2dfd2262424793, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boundingWallPrefab: {fileID: 3949463903726118009, guid: 32aaf135a5a06424abaf5fd87638f652,
-    type: 3}
-  wallPrefab: {fileID: 4144138802841672349, guid: 1c680d5a067c686419646e32cdd85aa5,
-    type: 3}
   doorPrefab: {fileID: 5142108585913456688, guid: dc97324eedcbfe542b00d8b9eab91d51,
-    type: 3}
-  propPrefab: {fileID: 7764687337703388865, guid: 3625070f29b92454fa8b251abdc55e76,
-    type: 3}
-  enemyPrefab: {fileID: 3833313069872845422, guid: 2ff365d0d0c771e4fa3fa9c40750e26f,
     type: 3}
 --- !u!4 &1948814264
 Transform:
@@ -272,3 +265,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 5616398307883283245, guid: 30bd7e79364cbf14ca388c1da736148c,
     type: 3}
+--- !u!114 &1948814266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1948814262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9161e6843a04e984395746e73bc17684, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type_Prefabs:
+  - type: 0
+    prefab: {fileID: 3949463903726118009, guid: 32aaf135a5a06424abaf5fd87638f652,
+      type: 3}
+  - type: 1
+    prefab: {fileID: 4144138802841672349, guid: 1c680d5a067c686419646e32cdd85aa5,
+      type: 3}
+  - type: 2
+    prefab: {fileID: 7764687337703388865, guid: 3625070f29b92454fa8b251abdc55e76,
+      type: 3}
+  - type: 3
+    prefab: {fileID: 3881307033590821417, guid: 02487dede2b6e3b468099f465130d627,
+      type: 3}
+  - type: 4
+    prefab: {fileID: 3833313069872845422, guid: 2ff365d0d0c771e4fa3fa9c40750e26f,
+      type: 3}
+  - type: 5
+    prefab: {fileID: 3993931880245264715, guid: a00b8c6f219de3b458eed3b414cae06a,
+      type: 3}

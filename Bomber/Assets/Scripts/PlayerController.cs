@@ -41,8 +41,8 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            GameObject bomb = Instantiate(BombPrefab);
-            bomb.transform.position = new Vector3(Mathf.Round(transform.position.x), Mathf.Round(transform.position.y));
+            Vector2 pos = new Vector2(Mathf.Round(transform.position.x), Mathf.Round(transform.position.y));
+            GameObject bomb = ObjectPool.Instance.Get(ObjectType.Bomb, pos);
             bomb.GetComponent<Bomb>().InitBomb(explodeRange, delayTime);
         }
     }

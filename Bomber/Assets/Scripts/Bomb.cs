@@ -16,15 +16,15 @@ public class Bomb : MonoBehaviour
     IEnumerator explode(float time)
     {
         yield return new WaitForSeconds(time);
-        // TODO: need quaternion ?
-        Instantiate(BombEffectPrefab, transform.position, Quaternion.identity);
+        ObjectPool.Instance.Get(ObjectType.BombEffect, transform.position);
+
         // generate based on range
         ExplodeAllPositions(Vector2.up);
         ExplodeAllPositions(Vector2.down);
         ExplodeAllPositions(Vector2.left);
         ExplodeAllPositions(Vector2.right);
 
-        Destroy(gameObject);
+        ObjectPool.Instance.Add(ObjectType.Bomb, gameObject);
     }
 
     private void ExplodeAllPositions(Vector2 dir)
@@ -36,8 +36,7 @@ public class Bomb : MonoBehaviour
             {
                 break;
             }
-            GameObject obj = Instantiate(BombEffectPrefab);
-            obj.transform.position = pos;
+            ObjectPool.Instance.Get(ObjectType.BombEffect, pos);
         }
     }
 

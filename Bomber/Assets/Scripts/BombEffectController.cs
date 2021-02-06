@@ -26,7 +26,7 @@ public class BombEffectController : MonoBehaviour
         // normalizedTime => process bar 0:begin 1:end
         if (info.normalizedTime >= 1 && info.IsName("bombEffect"))
         {
-            Destroy(gameObject)
+            ObjectPool.Instance.Add(ObjectType.BombEffect, gameObject);
 ;
         }
     }

@@ -8,19 +8,24 @@ public class MapController : MonoBehaviour
     private List<Vector2> emptyPositions = new List<Vector2>();
     private List<Vector2> boundingWallList = new List<Vector2>();
 
-    // has to be public here
-    public GameObject boundingWallPrefab, wallPrefab, doorPrefab, propPrefab, enemyPrefab;
+    // has to be public here, door only has one object, so do not use objectPool here
+    public GameObject doorPrefab;
+    private GameObject doorObj;
+    // store all objects retrived from objectPool to put it back
+    private Dictionary<ObjectType, List<GameObject>> objectPoolDic = new Dictionary<ObjectType, List<GameObject>>();
 
     public void InitMap(int x, int y, int wallCount, int enemyCount)
     {
-        emptyPositions.Clear();
-        boundingWallList.Clear();
+        
+        ResetMap();
 
-        // traverse all child objs to generate new game
+        // do not destroy here in order to improve performance
+        /*
         foreach (Transform item in transform)
-        {
-            Destroy(item.gameObject);
+        {   
+            //Destroy(item.gameObject);
         }
+        */
 
         X = x;
         Y = y;
@@ -31,6 +36,35 @@ public class MapController : MonoBehaviour
         CreateDoor();
         CreateProps();
         CreateEnemy(enemyCount);
+    }
+
+    // Clear: 1. emptyPosList, 2. boundingWallList, 3. objectPoolDictionary 
+    // Store: store all objects in ObjectPool
+    // Hide: hide all objects in objectPoolDictionary
+    private void ResetMap() {
+        emptyPositions.Clear();
+        boundingWallList.Clear();
+
+        foreach (var entry in objectPoolDic)
+        {
+            foreach (var obj in entry.Value)
+            {
+                ObjectPool.Instance.Add(entry.Key, obj);
+            }
+        }
+
+        // clear Dictionary 
+        objectPoolDic.Clear();
+    }
+
+    // add all Instantiate() objects to dictionary in order to put it back to objectPool
+    private void AddToObjectDictionary(ObjectType type, GameObject obj) 
+    {
+        if (!objectPoolDic.ContainsKey(type))
+        {
+            objectPoolDic.Add(type, new List<GameObject>());
+        }
+        objectPoolDic[type].Add(obj);
     }
 
     public void CreateBoundingWall()
@@ -62,9 +96,9 @@ public class MapController : MonoBehaviour
 
     private void CreateBoundingWallInstance(Vector2 pos)
     {
-        GameObject obj = Instantiate(boundingWallPrefab, transform);
-        obj.transform.position = pos;
+        GameObject obj = ObjectPool.Instance.Get(ObjectType.BoundingWall, pos);
         boundingWallList.Add(pos);
+        AddToObjectDictionary(ObjectType.BoundingWall, obj);
     }
 
     public bool IsBoundingWall(Vector2 pos)
@@ -73,7 +107,7 @@ public class MapController : MonoBehaviour
     }
 
     private void StoreEmptyPositions()
-    {   
+    {
         for (int x = -X - 1; x <= X - 1; x++)
         {
             if ((-X - 1) % 2 == x % 2)
@@ -109,8 +143,8 @@ public class MapController : MonoBehaviour
         for (int i = 0; i < num; i++)
         {
             int idx = Random.Range(0, emptyPositions.Count);
-            GameObject obj = Instantiate(wallPrefab, transform);
-            obj.transform.position = emptyPositions[idx];
+            GameObject obj = ObjectPool.Instance.Get(ObjectType.Wall, emptyPositions[idx]);
+            AddToObjectDictionary(ObjectType.Wall, obj);
 
             // avoid duplicates
             emptyPositions.RemoveAt(idx);
@@ -120,8 +154,12 @@ public class MapController : MonoBehaviour
     private void CreateDoor()
     {
         int idx = Random.Range(0, emptyPositions.Count);
-        GameObject doorObj = Instantiate(doorPrefab, transform);
+        if (doorObj == null)
+        {
+            doorObj = Instantiate(doorPrefab, transform);
+        }
         doorObj.transform.position = emptyPositions[idx];
+        doorObj.GetComponent<Door>().ResetDoor();
         emptyPositions.RemoveAt(idx);
     }
 
@@ -131,8 +169,8 @@ public class MapController : MonoBehaviour
         for (int i = 0; i < count; i++)
         {
             int idx = Random.Range(0, emptyPositions.Count);
-            GameObject obj = Instantiate(propPrefab, transform);
-            obj.transform.position = emptyPositions[idx];
+            GameObject obj = ObjectPool.Instance.Get(ObjectType.Prop, emptyPositions[idx]);
+            AddToObjectDictionary(ObjectType.Prop, obj);
             emptyPositions.RemoveAt(idx);
         }
 
@@ -148,8 +186,9 @@ public class MapController : MonoBehaviour
         for (int i = 0; i < count; i++)
         {
             int idx = Random.Range(0, emptyPositions.Count);
-            GameObject obj = Instantiate(enemyPrefab, transform);
-            obj.transform.position = emptyPositions[idx];
+            GameObject obj = ObjectPool.Instance.Get(ObjectType.Enemy, emptyPositions[idx]);
+            obj.GetComponent<EnemyController>().InitEnemy();
+            AddToObjectDictionary(ObjectType.Enemy, obj);
             emptyPositions.RemoveAt(idx);
         }
     }

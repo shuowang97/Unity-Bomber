@@ -12,15 +12,23 @@ public class EnemyController : MonoBehaviour
     private bool movable = true;
 
     // 0-up 1-down 2-left 3-right
-    private int dirId = 0;
+    // private int dirId = 0;
     private Vector2 curDirection = new Vector2();
 
     private void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        GetDirection(Random.Range(0, 4));
         color = spriteRenderer.color;
+    }
+
+    // when retrive old objs from objectPool, some object's values need to be reset
+    public void InitEnemy()
+    {
+        color.a = 1;
+        spriteRenderer.color = color;
+        movable = true;
+        GetDirection(Random.Range(0, 4));
     }
 
     private void Update()
@@ -60,7 +68,7 @@ public class EnemyController : MonoBehaviour
     {
         if (collision.CompareTag(TagEnum.BombEffect))
         {
-            Destroy(gameObject);
+            ObjectPool.Instance.Add(ObjectType.Enemy, gameObject);
         }
 
         // transparent effect when 2 enemies meet

@@ -96,6 +96,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   doorSprite: {fileID: 21300000, guid: 4b6f649407819884f898b070ef85a6ab, type: 3}
+  defaultSprite: {fileID: 21300000, guid: fc8626c378b2d34409351e0605b2d158, type: 3}
 --- !u!61 &-1296461310694935921
 BoxCollider2D:
   m_ObjectHideFlags: 0
