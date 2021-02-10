@@ -9,4 +9,5 @@ public class TagEnum
     public const string Enemy = "Enemy";
     public const string BombEffect = "BombEffect";
     public const string Player = "Player";
+    public const string FreezeEffect = "FreezeEffect";
 }

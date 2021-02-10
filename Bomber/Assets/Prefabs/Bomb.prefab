@@ -115,5 +115,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecc49ffcb2085a04881740032de05e32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bombTypeList:
+  - bombType: 0
+    sprite: {fileID: 8114985772114671235, guid: a68c83986febbda4ca030919b2b427e6,
+      type: 3}
+  - bombType: 1
+    sprite: {fileID: 7594749636238397995, guid: a68c83986febbda4ca030919b2b427e6,
+      type: 3}
+  - bombType: 2
+    sprite: {fileID: 8397520373162071104, guid: 8c7245b7173ab9a46afcad22f8264726,
+      type: 3}
   BombEffectPrefab: {fileID: 3993931880245264715, guid: a00b8c6f219de3b458eed3b414cae06a,
     type: 3}
+  animations:
+  - {fileID: 7400000, guid: 81bac3d15c0ce0d4cace3f3641c6f3c1, type: 2}
+  - {fileID: 7400000, guid: fbb03f7ef00032c499a102534d5adb25, type: 2}
+  - {fileID: 7400000, guid: 1b6cbc9d9cffa4348adfebe8d7eb71c0, type: 2}

@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3947553258281126465}
-  - component: {fileID: 4226211563278133991}
   - component: {fileID: -732120720140227013}
   - component: {fileID: 5163170517400798019}
   - component: {fileID: -9042270005078937155}
@@ -34,25 +33,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4226211563278133991
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7764687337703388865}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e096c8228d8d76b49a984b8ea61781e1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  propSpriteArray:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  defaultSprite: {fileID: 0}
 --- !u!114 &-732120720140227013
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65,12 +45,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e096c8228d8d76b49a984b8ea61781e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  propSpriteArray:
-  - {fileID: 7305353108447693555, guid: 3ed860c79d004094b96d24f4dd332d40, type: 3}
-  - {fileID: -6541916342287759255, guid: 3ed860c79d004094b96d24f4dd332d40, type: 3}
-  - {fileID: -687685332715017642, guid: 3ed860c79d004094b96d24f4dd332d40, type: 3}
-  - {fileID: 6805428983234042088, guid: 3ed860c79d004094b96d24f4dd332d40, type: 3}
-  - {fileID: 4857230696512059726, guid: 3ed860c79d004094b96d24f4dd332d40, type: 3}
+  propTypeList:
+  - propType: 0
+    sprite: {fileID: -687685332715017642, guid: 3ed860c79d004094b96d24f4dd332d40,
+      type: 3}
+  - propType: 1
+    sprite: {fileID: 4857230696512059726, guid: 3ed860c79d004094b96d24f4dd332d40,
+      type: 3}
+  - propType: 2
+    sprite: {fileID: -6541916342287759255, guid: 3ed860c79d004094b96d24f4dd332d40,
+      type: 3}
+  - propType: 3
+    sprite: {fileID: 7305353108447693555, guid: 3ed860c79d004094b96d24f4dd332d40,
+      type: 3}
+  - propType: 4
+    sprite: {fileID: 6805428983234042088, guid: 3ed860c79d004094b96d24f4dd332d40,
+      type: 3}
   defaultSprite: {fileID: 21300000, guid: fc8626c378b2d34409351e0605b2d158, type: 3}
 --- !u!212 &5163170517400798019
 SpriteRenderer:

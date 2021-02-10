@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
+    private const int FreezeTime = 3;
     private Rigidbody2D rigid;
     private float speed = 0.05f;
     private float rayDistance = 0.7f;
     private SpriteRenderer spriteRenderer;
     private Color color;
     private bool movable = true;
-
-    // 0-up 1-down 2-left 3-right
-    // private int dirId = 0;
     private Vector2 curDirection = new Vector2();
 
     private void Awake()
@@ -43,6 +41,7 @@ public class EnemyController : MonoBehaviour
         }
     }
 
+    // 0-up 1-down 2-left 3-right
     private void GetDirection(int dir)
     {
         switch (dir)
@@ -66,8 +65,20 @@ public class EnemyController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag(TagEnum.BombEffect))
+        if (collision.CompareTag(TagEnum.FreezeEffect))
         {
+            if (speed == 0)
+            {
+                return;
+            }
+            StartCoroutine(FreezeEnemy());
+        }
+
+        // activeSelf => currently exist in the play
+        if (collision.CompareTag(TagEnum.BombEffect) && gameObject.activeSelf)
+        {
+            GameController.Instance.enemyCount--;
+            speed = 0.05f;
             ObjectPool.Instance.Add(ObjectType.Enemy, gameObject);
         }
 
@@ -91,6 +102,7 @@ public class EnemyController : MonoBehaviour
 
     }
 
+    // 0-up 1-down 2-left 3-right
     private void FindNewDir()
     {
         List<int> dirList = new List<int>();
@@ -151,6 +163,14 @@ public class EnemyController : MonoBehaviour
         Gizmos.DrawLine(transform.position, transform.position + new Vector3(0, -1 * rayDistance, 0));
         Gizmos.DrawLine(transform.position, transform.position + new Vector3(1 * rayDistance, 0, 0));
         Gizmos.DrawLine(transform.position, transform.position + new Vector3(-1 * rayDistance, 0, 0));
+    }
+
+    IEnumerator FreezeEnemy()
+    {
+        float curSpeed = speed;
+        speed = 0;
+        yield return new WaitForSeconds(FreezeTime);
+        speed = curSpeed + 0.03f;
     }
 
 

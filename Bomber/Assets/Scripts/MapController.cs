@@ -106,6 +106,11 @@ public class MapController : MonoBehaviour
         return boundingWallList.Contains(pos);
     }
 
+    public bool IsEmptyPosition(Vector2 pos) 
+    {
+        return emptyPositions.Contains(pos);
+    }
+
     private void StoreEmptyPositions()
     {
         for (int x = -X - 1; x <= X - 1; x++)
@@ -165,7 +170,7 @@ public class MapController : MonoBehaviour
 
     private void CreateProps()
     {
-        int count = Random.Range(0, (int)(2 + emptyPositions.Count * 0.05f));
+        int count = Random.Range(1, (int)(2 + emptyPositions.Count * 0.05f));
         for (int i = 0; i < count; i++)
         {
             int idx = Random.Range(0, emptyPositions.Count);
@@ -191,5 +196,10 @@ public class MapController : MonoBehaviour
             AddToObjectDictionary(ObjectType.Enemy, obj);
             emptyPositions.RemoveAt(idx);
         }
+    }
+
+    public void AddEmptyPos(Vector2 pos) 
+    {
+        emptyPositions.Add(pos);
     }
 }

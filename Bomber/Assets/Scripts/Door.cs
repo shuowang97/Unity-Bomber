@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class Door : MonoBehaviour
 {
-    public Sprite doorSprite, defaultSprite;
+    public Sprite doorSprite;
+    private Sprite defaultSprite;
     private SpriteRenderer spriteRenderer;
 
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        defaultSprite = spriteRenderer.sprite;
     }
 
     public void ResetDoor()

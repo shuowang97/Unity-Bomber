@@ -6,21 +6,23 @@ public class PlayerController : MonoBehaviour
 {
     private Animator anim;
     private Rigidbody2D rigid;
-    private int HP;
+    public int HP;
     private Color color;
     private SpriteRenderer spriteRenderer;
-    private const float speed = 0.1f;
+    private float speed = 0.1f;
     public GameObject BombPrefab;
     private bool isInjured;
-
     private int explodeRange;
     private float delayTime;
+    private int bombCount;
+    private const int FreezeTime = 3;
 
-    public void Init(int explodeRange, int HP, float delayTime)
+    public void Init(int explodeRange, int HP, float delayTime, int bombCount)
     {
         this.explodeRange = explodeRange;
         this.HP = HP;
         this.delayTime = delayTime;
+        this.bombCount = bombCount;
     }
 
     private void Awake()
@@ -39,11 +41,12 @@ public class PlayerController : MonoBehaviour
 
     private void CreateBomb()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && bombCount > 0)
         {
+            bombCount--;
             Vector2 pos = new Vector2(Mathf.Round(transform.position.x), Mathf.Round(transform.position.y));
             GameObject bomb = ObjectPool.Instance.Get(ObjectType.Bomb, pos);
-            bomb.GetComponent<Bomb>().InitBomb(explodeRange, delayTime);
+            bomb.GetComponent<Bomb>().InitBomb(explodeRange, delayTime, addBombCount);
         }
     }
 
@@ -61,14 +64,32 @@ public class PlayerController : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
-    {
+    {   
+
+        if (speed != 0 && collision.CompareTag(TagEnum.FreezeEffect)) 
+        {
+            StartCoroutine(FreezePlayer());
+        }
+
         // invincible status
         if (isInjured) return;
 
         if (collision.CompareTag(TagEnum.Enemy) || collision.CompareTag(TagEnum.BombEffect))
         {
-            HP--;
-            StartCoroutine("Injured", 2f);
+            if (HP > 0)
+            {
+                HP--;
+                if (HP >= 1)
+                {
+                    StartCoroutine("Injured", 2f);
+                }
+                else
+                {
+                    // TODO: add die animation & game over, after week 6
+                    print("Game Over");
+                }
+            }
+
         }
     }
 
@@ -88,4 +109,19 @@ public class PlayerController : MonoBehaviour
         }
         isInjured = false;
     }
+
+    // used as a parameter to pass 
+    private void addBombCount()
+    {
+        bombCount++;
+    }
+
+    IEnumerator FreezePlayer()
+    {
+        float curSpeed = speed;
+        speed = 0;
+        yield return new WaitForSeconds(FreezeTime);
+        speed = curSpeed;
+    }
+
 }

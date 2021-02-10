@@ -1,22 +1,16 @@
 fileFormatVersion: 2
-guid: 3ed860c79d004094b96d24f4dd332d40
+guid: 8c7245b7173ab9a46afcad22f8264726
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7305353108447693555
-    second: Prop_0
+      213: -2598458765549689705
+    second: bomb3-final1-removebg-preview_0
   - first:
-      213: -6541916342287759255
-    second: Prop_1
+      213: 8397520373162071104
+    second: bomb3-final1-removebg-preview_1
   - first:
-      213: -687685332715017642
-    second: Prop_2
-  - first:
-      213: 6805428983234042088
-    second: Prop_3
-  - first:
-      213: 4857230696512059726
-    second: Prop_4
+      213: -7082580246989082817
+    second: bomb3-final1-removebg-preview_2
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -60,7 +54,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 220
+  spritePixelsToUnits: 70
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -114,106 +108,64 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Prop_0
+      name: bomb3-final1-removebg-preview_0
       rect:
         serializedVersion: 2
-        x: 88
-        y: 180
-        width: 60
-        height: 60
+        x: 82
+        y: 295
+        width: 24
+        height: 24
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3fa02db52f3d16560800000000000000
-      internalID: 7305353108447693555
+      spriteID: 79429eb158b60fbd0800000000000000
+      internalID: -2598458765549689705
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Prop_1
+      name: bomb3-final1-removebg-preview_1
       rect:
         serializedVersion: 2
-        x: 168
-        y: 179
-        width: 60
-        height: 62
+        x: 218
+        y: 299
+        width: 29
+        height: 27
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9688d9b4fb17635a0800000000000000
-      internalID: -6541916342287759255
+      spriteID: 0445e64994cf98470800000000000000
+      internalID: 8397520373162071104
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Prop_2
+      name: bomb3-final1-removebg-preview_2
       rect:
         serializedVersion: 2
-        x: 248
-        y: 179
-        width: 60
-        height: 62
+        x: 350
+        y: 302
+        width: 25
+        height: 24
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 65a664a55d9d476f0800000000000000
-      internalID: -687685332715017642
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Prop_3
-      rect:
-        serializedVersion: 2
-        x: 8
-        y: 100
-        width: 61
-        height: 61
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8e810d18a9db17e50800000000000000
-      internalID: 6805428983234042088
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Prop_4
-      rect:
-        serializedVersion: 2
-        x: 88
-        y: 99
-        width: 60
-        height: 62
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e4979b17599586340800000000000000
-      internalID: 4857230696512059726
+      spriteID: f3f640d5ace95bd90800000000000000
+      internalID: -7082580246989082817
       vertices: []
       indices: 
       edges: []

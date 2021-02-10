@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5616398307883283244}
   - component: {fileID: 5616398307883283241}
   - component: {fileID: 3068105274031378377}
-  - component: {fileID: 937689880675755223}
+  - component: {fileID: -8154200433462347176}
   m_Layer: 0
   m_Name: player
   m_TagString: Player
@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 5616398307883283245}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.7, y: 1.7, z: 1}
+  m_LocalScale: {x: 2.26, y: 1.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -74,13 +74,13 @@ SpriteRenderer:
   m_SortingLayerID: -1433516057
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2311659948842064771, guid: 959d6d8228332c54c8d73dc8c4e4cef8,
+  m_Sprite: {fileID: -889739676950766307, guid: d2480065452a8584aa9bedc605d9d551,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.5, y: 0.56}
+  m_Size: {x: 0.42, y: 0.62}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -117,6 +117,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f355460ebe0f6142b7f6d1ffcd2743c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HP: 0
   BombPrefab: {fileID: 3881307033590821417, guid: 02487dede2b6e3b468099f465130d627,
     type: 3}
 --- !u!50 &3068105274031378377
@@ -140,7 +141,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!70 &937689880675755223
+--- !u!70 &-8154200433462347176
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -154,5 +155,5 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.49999997, y: 0.55999994}
+  m_Size: {x: 0.41999996, y: 0.61999995}
   m_Direction: 0
